@@ -80,9 +80,9 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(actual, expected, 'Expected rectangle picture to be different.')     
 
     def test_square_picture(self):
-        self.sq.set_side(2)
+        self.sq.set_side(3)
         actual = self.sq.get_picture()
-        expected = "**\n**\n"
+        expected = "***\n***\n***\n"
         self.assertEqual(actual, expected, 'Expected square picture to be different.')   
 
     def test_big_picture(self):
@@ -93,10 +93,17 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(actual, expected, 'Expected message: "Too big for picture."')
 
     def test_get_amount_inside(self):
-        self.rect.set_height(10)
-        self.rect.set_width(15)
+        self.rect.set_height(20)
+        self.rect.set_width(10)
         actual = self.rect.get_amount_inside(self.sq)
-        expected = 6
+        expected = 8
+        self.assertEqual(actual, expected, 'Expected `get_amount_inside` to return 6.')
+
+    def test_get_amount_inside2(self):
+        self.rect.set_height(40)
+        self.rect.set_width(10)
+        actual = self.rect.get_amount_inside(self.sq)
+        expected = 16
         self.assertEqual(actual, expected, 'Expected `get_amount_inside` to return 6.')
 
     def test_get_amount_inside_two_rectangles(self):
